@@ -56,8 +56,8 @@ public class Task {
         return this.user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(User user2) {
+        this.user = user2;
     }
 
     public String getDescription() {
