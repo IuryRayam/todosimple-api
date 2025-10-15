@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-pack", 
+        "vmware.vscode-boot-dev-pack",
+        "jaland.java-generate-setters-getters-update-equals",
+        "ritwickdey.liveserver"
+    ]
+}
