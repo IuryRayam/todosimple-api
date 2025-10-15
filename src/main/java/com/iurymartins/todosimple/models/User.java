@@ -30,7 +30,7 @@ public class User {
     @Column(name = "id", unique = true)
     private Long id;
 
-    @Column(name = "nome", length = 100, nullable = false, unique = true)
+    @Column(name = "username", length = 100, nullable = false, unique = true)
     @NotNull(groups = CreateUser.class)
     @NotEmpty(groups = CreateUser.class)
     @Size(groups = CreateUser.class,min = 2, max = 100)
