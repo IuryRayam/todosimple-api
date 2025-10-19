@@ -15,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -84,6 +85,7 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public List<Task> getTasks() {
         return this.tasks;
     }
