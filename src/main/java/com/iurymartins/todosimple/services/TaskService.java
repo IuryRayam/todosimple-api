@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.iurymartins.todosimple.models.User;
 import com.iurymartins.todosimple.models.Task;
 import com.iurymartins.todosimple.repositories.TaskRepository;
+import com.iurymartins.todosimple.services.exceptions.DataBindingViolationException;
+import com.iurymartins.todosimple.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class TaskService {
@@ -22,7 +24,7 @@ public class TaskService {
 
     public Task findById(Long id) {
         Optional<Task> task = this.taskRepository.findById(id);
-        return task.orElseThrow(() -> new RuntimeException(
+        return task.orElseThrow(() -> new ObjectNotFoundException(
             "Tarefa não encontrada! Id: " + id + ", Tipo: " + Task.class.getName()
         ));
     }
@@ -53,7 +55,7 @@ public class TaskService {
         try {
             this.taskRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException(
+            throw new DataBindingViolationException(
                 "Não foi possível deletar pois há entidades relacionadas!"
             );
         }
