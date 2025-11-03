@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties.Http;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpHeaders;
@@ -136,10 +135,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler imple
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
-        Integer status = HttpStatus.FORBIDDEN.value();
+        Integer status = HttpStatus.UNAUTHORIZED.value();
         response.setStatus(status);
-        response.setContentType("appplication.json");
-        ErrorResponse errorResponse = new ErrorResponse(status, "Eamil ou senha inválidos.");
+        response.setContentType("application/json");
+        ErrorResponse errorResponse = new ErrorResponse(status, "Email ou senha inválidos.");
         response.getWriter().append(errorResponse.toJson());
     }
 
