@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.iurymartins.todosimple.models.Task;
+import com.iurymartins.todosimple.models.projection.TaskProjection;
 import com.iurymartins.todosimple.services.TaskService;
 
 import jakarta.validation.Valid;
@@ -36,8 +37,8 @@ public class TaskController {
     }
 
     @GetMapping("/user")
-    public ResponseEntity<List<Task>> findAllByUser() {
-        List<Task> tasks = this.taskService.findAllByUser();
+    public ResponseEntity<List<TaskProjection>> findAllByUser() {
+        List<TaskProjection> tasks = this.taskService.findAllByUser();
         return ResponseEntity.ok().body(tasks);
     }
 
